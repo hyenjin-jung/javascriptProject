@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Coda' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Coda', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(59, 59, 59, 0.7), rgba(0, 0, 0, 0.7));
+            z-index: 1;
+        }
+        .calculator-container {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 10px;
+            display: inline-block;
+            min-width: 350px; /* 최소 너비 설정 */
+            max-width: 100%; /* 최대 너비를 부모 요소에 맞춤 */
+            white-space: nowrap; /* 줄바꿈 방지 */
+        }
+        .logo {
+            background-color: #747670;
+            text-align: center;
+            padding: 5px;
+            border-radius: 10px;
+            margin-bottom: 1em;
+        }
+        .logo h1 {
+            font-family: 'Coda', sans-serif;
+            font-size: 50px;
+            font-weight: bolder;
+            color: white;
+            -webkit-text-stroke: 1px black;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .calculator {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            width: 100%;
+            white-space: nowrap; /* 줄바꿈 방지 */
+        }
+        input[type="text"] {
+            width: 100px;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: blue;
+        }
+        #cal, #equ, #result {
+            font-size: 24px;
+            margin: 0 10px;
+            color: #333;
+            white-space: nowrap;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        button {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            color: white;
+            background-color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="calculator-container">
+        <div class="logo">
+            <h1>calculator</h1>
+        </div>
+        <div class="calculator">
+            <input type="text" id="num1" placeholder="첫번째 숫자">
+            <div id="cal"></div>
+            <input type="text" id="num2" placeholder="두번째 숫자">
+            <div id="equ">=</div>
+            <div id="result"></div>
+        </div>
+        <div class="buttons">
+            <button id="add">+</button>
+            <button id="sub">-</button>
+            <button id="mul">*</button>
+            <button id="div">/</button>
+        </div>
+    </div>
+    <script>
+        function calc(op) {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = '숫자를 입력하세요';
+            } else {
+                switch (op) {
+                    case 'add':
+                        result = num1 + num2;
+                        break;
+                    case 'sub':
+                        result = num1 - num2;
+                        break;
+                    case 'mul':
+                        result = num1 * num2;
+                        break;
+                    case 'div':
+                        result = num2 !== 0 ? num1 / num2 : '0으로 나눌 수 없습니다';
+                        break;
+                }
+            }
+            document.getElementById('result').innerText = result;
+        }
+        function setOp(op, symbol) {
+            document.getElementById('cal').innerText = symbol;
+            calc(op);
+        }
+        document.getElementById('add').addEventListener('click', () => setOp('add', '+'));
+        document.getElementById('sub').addEventListener('click', () => setOp('sub', '-'));
+        document.getElementById('mul').addEventListener('click', () => setOp('mul', '*'));
+        document.getElementById('div').addEventListener('click', () => setOp('div', '/'));
+    </script>
+</body>
+</html>

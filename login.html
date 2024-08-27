@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Coda' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Coda', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(59, 59, 59, 0.7), rgba(0, 0, 0, 0.7));
+            z-index: 1;
+        }
+        .login-container {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            border-radius: 10px;
+        }       
+        .logo {
+            background-color: #747670;
+            text-align: center;
+            padding: 5px;
+            border-radius: 10px;
+            margin-bottom: 1em;
+        }
+        .logo h1 {
+            font-family: 'Coda', sans-serif;
+            font-size: 60px;
+            font-weight: bolder;
+            color: white;
+            -webkit-text-stroke: 1px black;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .input-group {
+            margin-bottom: 1.5em;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 1em;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            background-color: #f9f9f9;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: blue;
+        }
+        .login-button {
+            background-color: #333;
+            font-family: 'Coda', sans-serif;
+            font-weight: 400;
+            font-size: 50px;
+            color: white;
+            border: none;
+            padding: 0.5em;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-button:hover {
+            background-color: #575757;
+        }
+        .social-login {
+            margin-top: 1.5em;
+        }
+        .social-login .fa-facebook {
+            font-size: 36px;
+            color: #213371;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .social-login .fa-twitter {
+            font-size: 36px;
+            color: #2090ff;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .social-login .fa-google {
+            font-size: 36px;
+            color: #000000;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .social-login .fab:hover {
+            color: #575757;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="login-container">
+        <div class="logo">
+            <h1>login</h1>
+        </div>
+        <form action="project.html">
+            <div class="input-group">
+                <input type="text" id="username" placeholder="아이디" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="비밀번호" required>
+            </div>
+            <button type="submit" class="login-button">로그인</button>
+        </form>
+        <div class="social-login">
+            <span class="fab fa-facebook"></span>
+            <span class="fab fa-twitter"></span>
+            <span class="fab fa-google"></span>
+        </div>
+    </div>
+</body>
+</html>
+
+
